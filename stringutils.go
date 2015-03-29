@@ -36,6 +36,22 @@ func IsNotBlank(s string) bool {
 	return false
 }
 
+func DefaultIfEmpty(s string, d string) string {
+	if IsEmpty(s) {
+		return d
+	}
+	
+	return s
+}
+
+func DefaultIfBlank(s string, d string) string {
+	if IsBlank(s) {
+		return d
+	}
+	
+	return s
+}
+
 func Reverse(s string) string {
 	r := []rune(s)
 	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {

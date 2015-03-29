@@ -102,6 +102,53 @@ func BenchmarkIsNotBlank(b *testing.B) {
 	}
 }
 
+func TestDefaultIfEmpty(t *testing.T) {
+	cases := []struct {
+		in, other, want string
+	}{
+		{"", "string", "string"},
+		{" H", "string", " H"},
+		{"something", "else", "something"},
+	}
+	
+	for _, c := range cases {
+		got := DefaultIfEmpty(c.in, c.other)
+		if got != c.want {
+			t.Errorf("DefaultIfEmpty(%q, %q) == %q, want %q", c.in, c.other, got, c.want)
+		}
+	}
+}
+
+func BenchmarkDefaultIfEmpty(b *testing.B) {
+	for i:=0; i < b.N; i++ {
+		DefaultIfEmpty(" Some", "string")
+	}
+}
+
+func TestDefaultIfBlank(t *testing.T) {
+	cases := []struct {
+		in, other, want string
+	}{
+		{"", "string", "string"},
+		{"  ", "string", "string"},
+		{" H", "string", " H"},
+		{"something", "else", "something"},
+	}
+	
+	for _, c := range cases {
+		got := DefaultIfBlank(c.in, c.other)
+		if got != c.want {
+			t.Errorf("DefaultIfBlank(%q, %q) == %q, want %q", c.in, c.other, got, c.want)
+		}
+	}
+}
+
+func BenchmarkDefaultIfBlank(b *testing.B) {
+	for i:=0; i < b.N; i++ {
+		DefaultIfBlank(" Some", "string")
+	}
+}
+
 func TestReverse(t *testing.T) {
 	cases := []struct {
 		in, want string
