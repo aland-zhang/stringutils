@@ -4,14 +4,14 @@ import "testing"
 
 func TestIsEmpty(t *testing.T) {
 	cases := []struct {
-		in string
+		in   string
 		want bool
 	}{
 		{"Hello, world", false},
 		{" ", false},
 		{"", true},
 	}
-	
+
 	for _, c := range cases {
 		got := IsEmpty(c.in)
 		if got != c.want {
@@ -21,21 +21,21 @@ func TestIsEmpty(t *testing.T) {
 }
 
 func BenchmarkIsEmpty(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		IsEmpty("Some String")
 	}
 }
 
 func TestIsNotEmpty(t *testing.T) {
 	cases := []struct {
-		in string
+		in   string
 		want bool
 	}{
 		{"Hello, world", true},
 		{" ", true},
 		{"", false},
 	}
-	
+
 	for _, c := range cases {
 		got := IsNotEmpty(c.in)
 		if got != c.want {
@@ -45,14 +45,14 @@ func TestIsNotEmpty(t *testing.T) {
 }
 
 func BenchmarkIsNotEmpty(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		IsNotEmpty("Some String")
 	}
 }
 
 func TestIsBlank(t *testing.T) {
 	cases := []struct {
-		in string
+		in   string
 		want bool
 	}{
 		{"Hello, world", false},
@@ -61,7 +61,7 @@ func TestIsBlank(t *testing.T) {
 		{"  ", true},
 		{"", true},
 	}
-	
+
 	for _, c := range cases {
 		got := IsBlank(c.in)
 		if got != c.want {
@@ -71,14 +71,14 @@ func TestIsBlank(t *testing.T) {
 }
 
 func BenchmarkIsBlank(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		IsBlank(" Some")
 	}
 }
 
 func TestIsNotBlank(t *testing.T) {
 	cases := []struct {
-		in string
+		in   string
 		want bool
 	}{
 		{"Hello, world", true},
@@ -87,7 +87,7 @@ func TestIsNotBlank(t *testing.T) {
 		{"  ", false},
 		{"", false},
 	}
-	
+
 	for _, c := range cases {
 		got := IsNotBlank(c.in)
 		if got != c.want {
@@ -97,7 +97,7 @@ func TestIsNotBlank(t *testing.T) {
 }
 
 func BenchmarkIsNotBlank(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		IsNotBlank(" Some")
 	}
 }
@@ -110,7 +110,7 @@ func TestDefaultIfEmpty(t *testing.T) {
 		{" H", "string", " H"},
 		{"something", "else", "something"},
 	}
-	
+
 	for _, c := range cases {
 		got := DefaultIfEmpty(c.in, c.other)
 		if got != c.want {
@@ -120,7 +120,7 @@ func TestDefaultIfEmpty(t *testing.T) {
 }
 
 func BenchmarkDefaultIfEmpty(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		DefaultIfEmpty(" Some", "string")
 	}
 }
@@ -134,7 +134,7 @@ func TestDefaultIfBlank(t *testing.T) {
 		{" H", "string", " H"},
 		{"something", "else", "something"},
 	}
-	
+
 	for _, c := range cases {
 		got := DefaultIfBlank(c.in, c.other)
 		if got != c.want {
@@ -144,7 +144,7 @@ func TestDefaultIfBlank(t *testing.T) {
 }
 
 func BenchmarkDefaultIfBlank(b *testing.B) {
-	for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		DefaultIfBlank(" Some", "string")
 	}
 }
@@ -158,7 +158,7 @@ func TestReverse(t *testing.T) {
 		{" \n", "\n "},
 		{"", ""},
 	}
-	
+
 	for _, c := range cases {
 		got := Reverse(c.in)
 		if got != c.want {
@@ -168,7 +168,7 @@ func TestReverse(t *testing.T) {
 }
 
 func BenchmarkReverse(b *testing.B) {
-for i:=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		Reverse(" ReversesreveR ")
 	}
 }

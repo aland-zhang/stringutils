@@ -1,38 +1,42 @@
 package stringutils
 
+const SpaceRune = ' '
+const Space = ""
+const Empty = ""
+
 func IsEmpty(s string) bool {
-	return len(s)==0
+	return len(s) == 0
 }
 
 func IsNotEmpty(s string) bool {
-	return len(s)!=0
+	return len(s) != 0
 }
 
 func IsBlank(s string) bool {
-	if len(s)==0 {
+	if len(s) == 0 {
 		return true
 	}
-	
+
 	for _, rune := range s {
-		if rune != ' ' {
+		if rune != SpaceRune {
 			return false
 		}
 	}
-	
+
 	return true
 }
 
 func IsNotBlank(s string) bool {
-	if len(s)==0 {
+	if len(s) == 0 {
 		return false
 	}
-	
+
 	for _, rune := range s {
-		if rune != ' ' {
+		if rune != SpaceRune {
 			return true
 		}
 	}
-	
+
 	return false
 }
 
@@ -40,7 +44,7 @@ func DefaultIfEmpty(s string, d string) string {
 	if IsEmpty(s) {
 		return d
 	}
-	
+
 	return s
 }
 
@@ -48,7 +52,7 @@ func DefaultIfBlank(s string, d string) string {
 	if IsBlank(s) {
 		return d
 	}
-	
+
 	return s
 }
 
